@@ -41,7 +41,7 @@ const pool = new Pool({
 // paths CRUD
 app.get('/events', async (req, res) => {
   try {
-    const result = await pool.query('SELECT * FROM events');
+    const result = await pool.query('SELECT * FROM events ORDER BY id ASC');
     res.status(200).json(result.rows);
   } catch (err) {
     console.error(err);
@@ -83,7 +83,7 @@ app.put('/events/:id', [
     if (result.rows.length === 0) {
       return res.status(404).send('Event not found');
     }
-    res.status(200).json(result.rows[0]);
+    res.status(204).send();
   } catch (err) {
     console.error(err);
     res.status(500).send('Server error');
@@ -97,7 +97,7 @@ app.delete('/events/:id', async (req, res) => {
     if (result.rows.length === 0) {
       return res.status(404).send('Event not found');
     }
-    res.status(200).json(result.rows[0]);
+    res.status(204).send();
   } catch (err) {
     console.error(err);
     res.status(500).send('Server error');
