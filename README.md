@@ -11,7 +11,7 @@ This project is a Node.js API that interacts with a PostgreSQL database for the 
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/yourusername/nodejs-postgres-api.git
+    git clone https://github.com/ivan-ravecca/nodejs-postgres-api.git
     cd nodejs-postgres-api
     ```
 
@@ -34,7 +34,7 @@ This project is a Node.js API that interacts with a PostgreSQL database for the 
 
 1. Start the server:
     ```sh
-    npm start
+    node ./src/index.js
     ```
 
 2. The API will be available at `http://localhost:3000`.
