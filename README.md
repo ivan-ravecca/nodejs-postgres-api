@@ -10,32 +10,45 @@ This project is a Node.js API that interacts with a PostgreSQL database for the 
 ## Installation
 
 1. Clone the repository:
-    ```sh
-    git clone https://github.com/ivan-ravecca/nodejs-postgres-api.git
-    cd nodejs-postgres-api
-    ```
+
+   ```sh
+   git clone https://github.com/ivan-ravecca/nodejs-postgres-api.git
+   cd nodejs-postgres-api
+   ```
 
 2. Install dependencies:
-    ```sh
-    npm install
-    ```
+
+   ```sh
+   npm install
+   ```
 
 3. Set up environment variables:
-    Create a `.env` file in the root directory and add the following:
-    ```env
-    DB_HOST=your_db_host
-    DB_USER=your_db_user
-    DB_PASSWORD=your_db_password
-    DB_NAME=your_db_name
-    DB_PORT=your_db_port
-    ```
+   Create a `.env` file in the root directory and add the following:
+
+   ```env
+   DB_HOST=your_db_host
+   DB_USER=your_db_user
+   DB_PASSWORD=your_db_password
+   DB_NAME=your_db_name
+   DB_PORT=your_db_port
+
+   // Using Neon
+   DATABASE_URL='postgresql://blablabla'
+   ```
 
 ## Usage
 
 1. Start the server:
-    ```sh
-    node ./src/index.js
-    ```
+
+   ```sh
+   node ./src/index.js
+   ```
+
+   or to use Neon ( @neondatabase/serverless - cloud postgre, avoid installing locally)
+
+   ```sh
+   node ./src/local_server.js
+   ```
 
 2. The API will be available at `http://localhost:3000`.
 
@@ -68,4 +81,13 @@ CREATE SEQUENCE public.events_id_seq
 
 ALTER TABLE ONLY public.events
     ADD CONSTRAINT events_pkey PRIMARY KEY (id);
+
+// ---- NEON
+CREATE TABLE "public"."events" (
+  "id" serial PRIMARY KEY,
+  "eventid" varchar(50) NOT NULL,
+  "timestamp" bigint NOT NULL,
+  "notes" text,
+  "event" json NOT NULL
+)
 ```
